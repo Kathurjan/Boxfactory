@@ -1,0 +1,28 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "BoxAPI", "BoxAPI\BoxAPI.csproj", "{53238430-B4A9-4AEE-B154-64CE0B5C95C7}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Infrastructure", "Infrastructure\Infrastructure.csproj", "{587CD7D4-0BCC-40C2-81BB-9F90EA396312}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Entities", "Entities\Entities.csproj", "{1841D93A-2ACA-4DDD-8DF1-1B46E7E97AC9}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{53238430-B4A9-4AEE-B154-64CE0B5C95C7}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{53238430-B4A9-4AEE-B154-64CE0B5C95C7}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{53238430-B4A9-4AEE-B154-64CE0B5C95C7}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{53238430-B4A9-4AEE-B154-64CE0B5C95C7}.Release|Any CPU.Build.0 = Release|Any CPU
+		{587CD7D4-0BCC-40C2-81BB-9F90EA396312}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{587CD7D4-0BCC-40C2-81BB-9F90EA396312}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{587CD7D4-0BCC-40C2-81BB-9F90EA396312}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{587CD7D4-0BCC-40C2-81BB-9F90EA396312}.Release|Any CPU.Build.0 = Release|Any CPU
+		{1841D93A-2ACA-4DDD-8DF1-1B46E7E97AC9}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{1841D93A-2ACA-4DDD-8DF1-1B46E7E97AC9}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{1841D93A-2ACA-4DDD-8DF1-1B46E7E97AC9}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{1841D93A-2ACA-4DDD-8DF1-1B46E7E97AC9}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+EndGlobal
