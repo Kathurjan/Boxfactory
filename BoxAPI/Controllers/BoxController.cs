@@ -48,18 +48,19 @@ public class BoxController : ControllerBase
 
     }
 
-    [HttpDelete("Id")]
+    [HttpDelete]
+    [Route("{Id}")]
     public void DeleteSuperHero(int id)
     {
         _boxesRepository.DeleteBoxes(id);
     }
 
-    [HttpPatch]
-    public ActionResult<Boxes> Updateboxes([FromBody] Boxes BoxtoUpdate)
+    [HttpPut]
+    public ActionResult<Boxes> Updateboxes([FromBody] Boxes boxToUpdate)
     {
         try
         {
-            return Ok(_boxesRepository.UpdateBoxes(BoxtoUpdate));
+            return Ok(_boxesRepository.UpdateBoxes(boxToUpdate));
         }
         catch (Exception e)
         {
