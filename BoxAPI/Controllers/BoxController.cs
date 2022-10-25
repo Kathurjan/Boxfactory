@@ -28,7 +28,7 @@ public class BoxController : ControllerBase
     [HttpGet]
     [Route("CreateDb")]
     public string CreateDb()
-    {
+    {   
         _boxesRepository.CreateDB();
         return "db has been created";
     }
