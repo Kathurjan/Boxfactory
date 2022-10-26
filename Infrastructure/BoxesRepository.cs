@@ -11,7 +11,7 @@ public class BoxesRepository
         _boxDbContext = context;
     }
 
-    public List<Boxes> getAllBoxes()
+    public List<Boxes> GetAllBoxes()
     {
         return _boxDbContext.BoxesTable.ToList();
     }
@@ -37,12 +37,10 @@ public class BoxesRepository
 
     public Boxes UpdateBoxes(Boxes boxUpdated)
     {
-        Boxes boxes = _boxDbContext.BoxesTable.First(b => b.Id == boxUpdated.Id);
-        boxes.Length = boxUpdated.Length;
-        boxes.Type = boxUpdated.Type;
-        boxes.Width = boxUpdated.Width;
+
+        _boxDbContext.BoxesTable.Update(boxUpdated);
         _boxDbContext.SaveChanges();
-        return boxes;
+        return boxUpdated;
     }
     public void CreateDB()
     {

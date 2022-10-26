@@ -21,7 +21,7 @@ public class BoxController : ControllerBase
     [HttpGet]
     public List<Boxes> GetBoxes()
     {
-        return _boxesRepository.getAllBoxes();
+        return _boxesRepository.GetAllBoxes();
     }
 
     // has the same "Http" so we need ti out it inside a route.
@@ -37,13 +37,14 @@ public class BoxController : ControllerBase
     public ActionResult AddBoxes(Boxes boxes)
     {   
         // the local variable "validation" is there to make sure the boxes obj is a valid obj.
-        var validation = _boxValidator.Validate(boxes).IsValid;
+        var validation = _boxValidator.Validate(boxes);
         // if the validation is true, it will create the box and insert into the dp and return a OK request
-        if (validation)
+        if (validation.IsValid)
         {
             return Ok(_boxesRepository.InsertProduct(boxes));
         }
         // else it will return a "BadRequest" along with what the issues was.
+      
         return BadRequest(validation.ToString());
 
     }
@@ -56,7 +57,8 @@ public class BoxController : ControllerBase
     }
 
     [HttpPut]
-    public ActionResult<Boxes> Updateboxes([FromBody] Boxes boxToUpdate)
+    [Route("{Id}")]
+    public ActionResult<Boxes> Updateboxes(Boxes boxToUpdate)
     {
         try
         {
@@ -65,6 +67,7 @@ public class BoxController : ControllerBase
         catch (Exception e)
         {
             return BadRequest("failed to update body");
+            
         }
     }
 

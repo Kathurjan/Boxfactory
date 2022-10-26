@@ -10,7 +10,7 @@ builder.Services.AddControllers();
 builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen();
 builder.Services.AddDbContext<BoxDbContext>(options => options.UseSqlite(
-    "DAta source = db.db"
+    "Data source = db.db"
     
     ));
 builder.Services.AddScoped<BoxesRepository>();
@@ -24,9 +24,10 @@ if (app.Environment.IsDevelopment())
     app.UseSwaggerUI();
     app.UseCors(options =>
     {
-        options.AllowAnyOrigin();
-        options.AllowAnyHeader();
-        options.AllowAnyMethod();
+        options.SetIsOriginAllowed(origin => true)
+            .AllowAnyMethod()
+            .AllowAnyHeader()
+            .AllowCredentials();
     });
 }
 
