@@ -14,7 +14,11 @@ builder.Services.AddDbContext<BoxDbContext>(options => options.UseSqlite(
     
     ));
 builder.Services.AddScoped<BoxesRepository>();
-builder.Services.AddCors();
+builder.Services.AddCors(options => options.AddPolicy("default", policy =>
+{
+    policy.WithOrigins("http://localhost:4200").AllowAnyHeader().AllowAnyOrigin().AllowAnyMethod();
+}));
+
 var app = builder.Build();
 
 // Configure the HTTP request pipeline.
@@ -22,19 +26,11 @@ if (app.Environment.IsDevelopment())
 {
     app.UseSwagger();
     app.UseSwaggerUI();
-    app.UseCors(options =>
-    {
-        options.SetIsOriginAllowed(origin => true)
-            .AllowAnyMethod()
-            .AllowAnyHeader()
-            .AllowCredentials();
-    });
+  
+
 }
 
-
-
-app.UseHttpsRedirection();
-
+app.UseCors("default");
 app.UseAuthorization();
 
 app.MapControllers();

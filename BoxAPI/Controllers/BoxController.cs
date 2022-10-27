@@ -17,7 +17,7 @@ public class BoxController : ControllerBase
         _boxValidator = new BoxValidator();
     }
 
-
+    
     [HttpGet]
     public List<Boxes> GetBoxes()
     {
