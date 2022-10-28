@@ -13,11 +13,15 @@ builder.Services.AddDbContext<BoxDbContext>(options => options.UseSqlite(
     "Data source = db.db"
     
     ));
-builder.Services.AddScoped<BoxesRepository>();
+builder.Services.AddScoped<BoxesRepository>();/*
 builder.Services.AddCors(options => options.AddPolicy("default", policy =>
 {
     policy.WithOrigins("http://localhost:4200").AllowAnyHeader().AllowAnyOrigin().AllowAnyMethod();
-}));
+        policy.WithOrigins("http://localhost:4200").AllowAnyHeader().AllowAnyOrigin().AllowAnyMethod();
+        policy.WithOrigins("http://localhost:5001").AllowAnyHeader().AllowAnyOrigin().AllowAnyMethod();
+
+
+}));*/
 
 var app = builder.Build();
 
@@ -30,8 +34,12 @@ if (app.Environment.IsDevelopment())
 
 }
 
-app.UseCors("default");
-app.UseAuthorization();
+app.UseCors(p =>
+{
+    p.AllowAnyHeader().AllowAnyMethod().AllowAnyOrigin();
+});
+
+//app.UseAuthorization();
 
 app.MapControllers();
 
