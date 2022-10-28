@@ -14,12 +14,10 @@ builder.Services.AddDbContext<BoxDbContext>(options => options.UseSqlite(
     
     ));
 builder.Services.AddScoped<BoxesRepository>();
-builder.Services.AddCors(options => options.AddPolicy("default", policy =>
-{
-    policy.WithOrigins("http://localhost:4200").AllowAnyHeader().AllowAnyOrigin().AllowAnyMethod();
-}));
+builder.Services.AddCors();
 
 var app = builder.Build();
+
 
 // Configure the HTTP request pipeline.
 if (app.Environment.IsDevelopment())
@@ -29,8 +27,20 @@ if (app.Environment.IsDevelopment())
   
 
 }
+app.UseCors(corsPolicyBuilder =>
+    {
+        corsPolicyBuilder
+            .WithOrigins("http://localhost:4200", "https://localhost:4200","http://localhost:51649")
+            .SetIsOriginAllowedToAllowWildcardSubdomains()
+            .AllowAnyHeader()
+            .AllowCredentials()
+            .WithMethods("GET", "PUT", "POST", "DELETE", "OPTIONS")
+            .SetPreflightMaxAge(TimeSpan.FromSeconds(3600));
+ 
+    }
+);
 
-app.UseCors("default");
+
 app.UseAuthorization();
 
 app.MapControllers();

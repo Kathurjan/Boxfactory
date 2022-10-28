@@ -24,7 +24,7 @@ public class BoxController : ControllerBase
         return _boxesRepository.GetAllBoxes();
     }
 
-    // has the same "Http" so we need ti out it inside a route.
+    // has the same "Http" so we need to out it inside a route.
     [HttpGet]
     [Route("CreateDb")]
     public string CreateDb()
